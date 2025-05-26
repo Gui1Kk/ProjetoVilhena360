@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade - Vilhena 360°</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/comunidade.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+    <header class="header sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex items-center">
+                    <button id="desktop-hamburger-button" class="mr-4 text-[var(--darker-blue)] focus:outline-none p-2 hidden md:block" aria-label="Abrir menu de navegação principal">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <a href="../index.html" class="site-title" aria-label="Página Inicial Vilhena 360°">
+                        Vilhena 360°
+                    </a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <button id="profileIconBtn" class="profile-icon" aria-label="Menu do Perfil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a.75.75 0 0 1 .75.75v.256a4.5 4.5 0 0 1 3.384 4.47l.006.024c.03.16.05.322.058.488l.002.044a5.074 5.074 0 0 1 .002.106q.001.044.002.087a4.732 4.732 0 0 1-.007.137l-.002.032a4.502 4.502 0 0 1-1.36 2.627A4.5 4.5 0 0 1 12 12.5a4.5 4.5 0 0 1-3.075-1.016A4.501 4.501 0 0 1 7.57 8.857l-.002-.032a4.733 4.733 0 0 1-.006-.137q.001-.043.002-.087c0-.035.001-.07.002-.106l.002-.044a4.504 4.504 0 0 1 .058-.488l.006-.024a4.5 4.5 0 0 1 3.384-4.47V3.25a.75.75 0 0 1 .75-.75Zm0 1.5A3 3 0 0 0 9.232 7.004l-.005.024a3.004 3.004 0 0 0-.038.326l-.002.03c0 .024 0 .047-.001.07a2.98 2.98 0 0 0 .004.091l.002.022a3 3 0 0 0 .908 1.752A3 3 0 0 0 12 11a3 3 0 0 0 2.008-.701 3.002 3.002 0 0 0 .907-1.752l.002-.022c.002-.023.003-.046.004-.07a2.98 2.98 0 0 0-.001-.09l-.002-.03a3.004 3.004 0 0 0-.038-.327l-.005-.023A3 3 0 0 0 12 4Zm0 9a7.487 7.487 0 0 0-5.349 2.289A7.5 7.5 0 0 0 1.5 20.75a.75.75 0 0 0 .75.75h19.5a.75.75 0 0 0 .75-.75 7.5 7.5 0 0 0-5.151-5.461A7.487 7.487 0 0 0 12 13Z"></path></svg>
+                        </button>
+                        <div id="profileDropdownMenu" class="profile-dropdown"></div>
+                    </div>
+                    <div class="md:hidden ml-2">
+                        <button id="hamburger-button" class="text-[var(--darker-blue)] focus:outline-none p-3 -mr-3" aria-label="Abrir menu de navegação">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav-menu" class="nav-menu fixed top-0 right-0 h-full w-72 sm:w-80 transform translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl md:hidden">
+        <div class="pt-24">
+            <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+            <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+            <a href="explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+            <a href="comunidade.html" class="nav-link active" data-page-name="comunidade">🎨 Comunidade</a>
+            <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+            <a href="trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
+        </div>
+    </nav>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav">
+        <div class="desktop-side-nav-logo-container">
+            <img src="https://i.postimg.cc/cvzKSKhF/logo.png" alt="Logo Vilhena 360" class="desktop-side-nav-logo">
+        </div>
+        <button id="desktop-nav-close-btn" class="desktop-nav-close-btn" aria-label="Fechar menu de navegação principal">&times;</button>
+        <div class="desktop-side-nav-header">Navegação</div>
+        <div class="desktop-side-nav-topic">Principal</div>
+        <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+        <div class="desktop-side-nav-topic">Cidadania</div>
+        <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+        <a href="boletins-vha.html" class="nav-link" data-page-name="boletins-vha">📰 Boletins VHA</a>
+        <a href="forum-vilhenense.html" class="nav-link" data-page-name="forum-vilhenense">💬 Fórum Vilhenense</a>
+        <div class="desktop-side-nav-topic">Exploração & Cultura</div>
+        <a href="explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+        <a href="comunidade.html" class="nav-link active" data-page-name="comunidade">🎨 Comunidade</a>
+        <div class="desktop-side-nav-topic">Desenvolvimento & Oportunidades</div>
+        <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+        <a href="trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
+        <div class="desktop-side-nav-topic">Legal</div>
+        <a href="politica-privacidade.html" class="nav-link footer-nav-link" data-page-name="politica-privacidade">📜 Política de Privacidade</a>
+        <a href="termos-uso.html" class="nav-link footer-nav-link" data-page-name="termos-uso">⚖️ Termos de Uso</a>
+    </nav>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-990 hidden"></div>
+
+    <main id="main-content-area" class="content-area page-specific-padding">
+        <section id="comunidade">
+            <div class="container mx-auto">
+                <a href="explore-vilhena.html" class="btn btn-secondary mb-8">‹ Voltar para Explore Vilhena</a>
+                <div class="subpage-header-spacing text-center">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">🎨 Comunidade Pulsante</h2>
+                    <p class="text-xl text-[var(--text-medium)] max-w-3xl mx-auto">
+                        Conecte-se através de paixões, expresse sua criatividade e celebre a diversidade cultural. Fomentamos uma identidade local forte.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 subpage-content-grid">
+                    <div class="card scroll-animate">
+                        <h3 class="text-2xl font-semibold mb-4">Arena Gamer Vilhena</h3>
+                        <p class="text-base-custom text-[var(--text-medium)] mb-5">Hub de e-sports: organize e participe de torneios, acompanhe rankings, conecte-se com jogadores e equipes.</p>
+                        <button class="btn btn-primary text-sm w-full">Entrar na Arena</button>
+                    </div>
+                    <div class="card scroll-animate" style="animation-delay: 0.2s;">
+                        <h3 class="text-2xl font-semibold mb-4">Galeria Vilhena Virtual (AR/VR)</h3>
+                        <p class="text-base-custom text-[var(--text-medium)] mb-5">Galeria de arte imersiva em 3D/VR para artistas locais. Descubra talentos e explore o e-commerce de arte.</p>
+                        <button class="btn btn-primary text-sm w-full">Visitar Galeria</button>
+                    </div>
+                    <div class="card md:col-span-2 scroll-animate" style="animation-delay: 0.4s;">
+                        <h3 class="text-2xl font-semibold mb-3">Sabores & Saberes Locais</h3>
+                        <p class="text-base-custom text-[var(--text-medium)] mb-4">Compartilhe receitas, explore o "Guia Afetivo" de lugares essenciais e conheça produtos na vitrine "Feito em Vilhena".</p>
+                        <div class="mt-4 pt-4 border-t border-[var(--border-light-gray)]">
+                            <h4 class="text-lg font-semibold text-[var(--darker-blue)] mb-2">✨ Crie com Ingredientes Locais (IA)</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-3">Tem alguns ingredientes de Vilhena e não sabe o que cozinhar? Deixe nossa IA te ajudar!</p>
+                            <button id="suggestRecipeBtn" class="btn btn-ai text-sm w-full sm:w-auto mt-2">Sugerir Receita com IA</button>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-3xl font-semibold my-10 text-center">Diversidade na Galeria Virtual</h3>
+                <div class="chart-container scroll-animate mb-8">
+                    <canvas id="artGalleryChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="suggestRecipeModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="suggestRecipeModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">✨ Sugerir Receita com Ingredientes Locais (IA)</h3>
+            <p class="text-[var(--text-medium)] mb-4 text-sm">Liste os ingredientes locais que você tem disponíveis (separados por vírgula) e nossa IA criará uma sugestão de receita para você!</p>
+            <textarea id="ingredientsText" placeholder="Ex: farinha de milho, queijo coalho, castanha do Pará, tucupi..."></textarea>
+            <button id="submitRecipeSuggestion" class="btn btn-primary w-full">Sugerir Receita</button>
+            <div id="recipeSuggestionResult" class="modal-result hidden">
+                <div class="loading-spinner hidden"></div>
+                <div id="recipeOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer py-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-3xl font-bold mb-6">Vilhena 360°</h4>
+            <p class="text-lg mb-3">&copy; <span id="currentYear"></span> Todos os direitos reservados.</p>
+            <p class="text-md mb-8">Uma plataforma para o avanço e a valorização de Vilhena.</p>
+            <div class="space-x-6">
+                <a href="politica-privacidade.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="politica-privacidade">Política de Privacidade</a>
+                <a href="termos-uso.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="termos-uso">Termos de Uso</a>
+                <a href="#" class="hover:text-[var(--accent-blue)] transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/comunidade.js"></script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vilhena 360° - Hackathon Hubee Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+    <header class="header sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex items-center">
+                    <button id="desktop-hamburger-button" class="mr-4 text-[var(--darker-blue)] focus:outline-none p-2 hidden md:block" aria-label="Abrir menu de navegação principal">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <a href="index.html" class="site-title" aria-label="Página Inicial Vilhena 360°">
+                        Vilhena 360°
+                    </a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <button id="profileIconBtn" class="profile-icon" aria-label="Menu do Perfil">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a.75.75 0 0 1 .75.75v.256a4.5 4.5 0 0 1 3.384 4.47l.006.024c.03.16.05.322.058.488l.002.044a5.074 5.074 0 0 1 .002.106q.001.044.002.087a4.732 4.732 0 0 1-.007.137l-.002.032a4.502 4.502 0 0 1-1.36 2.627A4.5 4.5 0 0 1 12 12.5a4.5 4.5 0 0 1-3.075-1.016A4.501 4.501 0 0 1 7.57 8.857l-.002-.032a4.733 4.733 0 0 1-.006-.137q.001-.043.002-.087c0-.035.001-.07.002-.106l.002-.044a4.504 4.504 0 0 1 .058-.488l.006-.024a4.5 4.5 0 0 1 3.384-4.47V3.25a.75.75 0 0 1 .75-.75Zm0 1.5A3 3 0 0 0 9.232 7.004l-.005.024a3.004 3.004 0 0 0-.038.326l-.002.03c0 .024 0 .047-.001.07a2.98 2.98 0 0 0 .004.091l.002.022a3 3 0 0 0 .908 1.752A3 3 0 0 0 12 11a3 3 0 0 0 2.008-.701 3.002 3.002 0 0 0 .907-1.752l.002-.022c.002-.023.003-.046.004-.07a2.98 2.98 0 0 0-.001-.09l-.002-.03a3.004 3.004 0 0 0-.038-.327l-.005-.023A3 3 0 0 0 12 4Zm0 9a7.487 7.487 0 0 0-5.349 2.289A7.5 7.5 0 0 0 1.5 20.75a.75.75 0 0 0 .75.75h19.5a.75.75 0 0 0 .75-.75 7.5 7.5 0 0 0-5.151-5.461A7.487 7.487 0 0 0 12 13Z"></path></svg>
+                        </button>
+                        <div id="profileDropdownMenu" class="profile-dropdown">
+                            </div>
+                    </div>
+                    <div class="md:hidden ml-2">
+                        <button id="hamburger-button" class="text-[var(--darker-blue)] focus:outline-none p-3 -mr-3" aria-label="Abrir menu de navegação">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav-menu" class="nav-menu fixed top-0 right-0 h-full w-72 sm:w-80 transform translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl md:hidden">
+        <div class="pt-24">
+            <a href="index.html" class="nav-link active" data-page-name="inicio">🏠 Início</a>
+            <a href="pages/conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+            <a href="pages/explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+            <a href="pages/comunidade.html" class="nav-link" data-page-name="comunidade">🎨 Comunidade</a>
+            <a href="pages/desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+            <a href="pages/trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
+            </div>
+    </nav>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav">
+        <div class="desktop-side-nav-logo-container">
+            <img src="https://i.postimg.cc/cvzKSKhF/logo.png" alt="Logo Vilhena 360" class="desktop-side-nav-logo">
+        </div>
+        <button id="desktop-nav-close-btn" class="desktop-nav-close-btn" aria-label="Fechar menu de navegação principal">&times;</button>
+        <div class="desktop-side-nav-header">Navegação</div>
+
+        <div class="desktop-side-nav-topic">Principal</div>
+        <a href="index.html" class="nav-link active" data-page-name="inicio">🏠 Início</a>
+
+        <div class="desktop-side-nav-topic">Cidadania</div>
+        <a href="pages/conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+        <a href="pages/boletins-vha.html" class="nav-link" data-page-name="boletins-vha">📰 Boletins VHA</a>
+        <a href="pages/forum-vilhenense.html" class="nav-link" data-page-name="forum-vilhenense">💬 Fórum Vilhenense</a>
+
+        <div class="desktop-side-nav-topic">Exploração & Cultura</div>
+        <a href="pages/explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+        <a href="pages/comunidade.html" class="nav-link" data-page-name="comunidade">🎨 Comunidade</a>
+
+        <div class="desktop-side-nav-topic">Desenvolvimento & Oportunidades</div>
+        <a href="pages/desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+        <a href="pages/trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
+
+        <div class="desktop-side-nav-topic">Legal</div>
+        <a href="pages/politica-privacidade.html" class="nav-link footer-nav-link" data-page-name="politica-privacidade">📜 Política de Privacidade</a>
+        <a href="pages/termos-uso.html" class="nav-link footer-nav-link" data-page-name="termos-uso">⚖️ Termos de Uso</a>
+    </nav>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-990 hidden"></div>
+
+    <main id="main-content-area" class="content-area">
+        <section id="inicio" class="active">
+            <div class="carousel-section-wrapper">
+                <div id="destaques-carousel" class="carousel-container">
+                    <div class="carousel-slide-wrapper">
+                        <div class="carousel-slide active">
+                            <img src="https://placehold.co/1600x900/7c0ada/FFFFFF?text=Vilhena+360%C2%B0:+Conectando+o+Amanhã" alt="Vilhena 360°: Conectando o Amanhã" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <div class="carousel-caption">
+                                <h3 class="font-black">Vilhena 360°: Conectando o Amanhã</h3>
+                                <p>Sua jornada digital para uma cidade mais integrada, inovadora e participativa começa aqui.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1600x900/042b99/E0EFFF?text=Inovação+e+Transformação+Digital" alt="Inovação e Transformação Digital" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <div class="carousel-caption">
+                                <h3 class="font-black">Inovação e Transformação Digital</h3>
+                                <p>Explore como a tecnologia redefine a experiência urbana em Vilhena, tornando-a mais inteligente e acessível.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1600x900/1F2937/A0AEC0?text=Cidadania+Ativa,+Cidade+Forte" alt="Cidadania Ativa, Cidade Forte" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <div class="carousel-caption">
+                                <h3 class="font-black">Cidadania Ativa, Cidade Forte</h3>
+                                <p>Sua voz é essencial. Participe, colabore e seja o protagonista na construção do futuro de Vilhena.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1600x900/3B82F6/FFFFFF?text=Cultura+Local:+Nossa+Identidade" alt="Cultura Local: Nossa Identidade" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <div class="carousel-caption">
+                                <h3 class="font-black">Cultura Local: Nossa Identidade</h3>
+                                <p>Descubra e celebre a rica tapeçaria cultural que torna Vilhena única.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1600x900/282c35/F7F9FC?text=Desenvolvimento+Sustentável" alt="Desenvolvimento Sustentável" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <div class="carousel-caption">
+                                <h3 class="font-black">Desenvolvimento Sustentável</h3>
+                                <p>Impulsionando o progresso econômico com responsabilidade e visão de futuro.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-click-nav">
+                        <div id="carousel-click-prev" class="carousel-click-nav-area"></div>
+                        <div id="carousel-click-next" class="carousel-click-nav-area"></div>
+                    </div>
+                    <div id="carousel-indicators-container" class="carousel-indicators"></div>
+                </div>
+                <div class="carousel-bottom-gradient"></div>
+            </div>
+
+            <div class="home-module-section scroll-animate angled-bg-left">
+                <div class="container mx-auto">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span class="module-icon">🏛️</span>
+                            <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-none"><span class="text-white">Conecta Cidadão:</span> <span class="text-[var(--darker-blue)]">Sua Voz Transforma.</span></h2>
+                            <p class="text-lg lg:text-xl text-[var(--text-medium)] mb-8 leading-relaxed">Democracia fortalecida, participação ativa. Acesse informações transparentes, influencie projetos e construa conosco o futuro de Vilhena. Seu engajamento é a chave.</p>
+                            <ul class="space-y-4 text-[var(--text-medium)] mb-10 text-md lg:text-lg">
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Projetos de lei detalhados para sua análise e feedback construtivo.</span></li>
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Orçamento participativo: defina prioridades e invista na sua comunidade.</span></li>
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Comunicação direta com serviços públicos para uma cidade ágil e eficiente.</span></li>
+                            </ul>
+                            <a href="pages/conecta-cidadao.html" class="btn btn-primary text-lg">Participe Agora</a>
+                        </div>
+                        <div class="hidden md:flex justify-center items-center">
+                            <img src="https://placehold.co/600x750/F7F9FC/042b99?text=Governança+Digital+Vilhena" alt="Governança Digital em Vilhena" class="shadow-2xl max-h-[750px] rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x750/cccccc/ffffff?text=Imagem+Indisponível';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-module-section scroll-animate angled-bg-right">
+                 <div class="container mx-auto">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                         <div class="hidden md:flex justify-center items-center order-2 md:order-1">
+                            <img src="https://placehold.co/600x750/F0F2F5/7c0ada?text=Exploração+Cultural+Imersiva" alt="Exploração Cultural Imersiva em Vilhena" class="shadow-2xl max-h-[750px] rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x750/cccccc/ffffff?text=Imagem+Indisponível';">
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <span class="module-icon">🗺️</span>
+                            <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-none"><span class="text-[var(--darker-blue)]">Explore Vilhena:</span> <span class="text-[var(--darker-blue)]">Jornada e Legado.</span></h2>
+                            <p class="text-lg lg:text-xl text-[var(--text-medium)] mb-8 leading-relaxed">Descubra a essência de Vilhena. Da história viva às maravilhas culturais, nossa plataforma é seu guia para uma exploração interativa, educativa e profundamente memorável. Conecte-se com o legado da sua cidade.</p>
+                             <ul class="space-y-4 text-[var(--text-medium)] mb-10 text-md lg:text-lg">
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Realidade Aumentada: testemunhe o passado ganhar vida em locais históricos.</span></li>
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Quests gamificadas: desvende mistérios e aprenda de forma divertida.</span></li>
+                                <li class="flex items-start"><svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Memórias Vivas: ouça as histórias que construíram Vilhena, contadas por seus protagonistas.</span></li>
+                            </ul>
+                            <a href="pages/explore-vilhena.html" class="btn btn-primary text-lg">Inicie Sua Aventura</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-module-section scroll-animate angled-bg-left">
+                <div class="container mx-auto">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span class="module-icon">📈</span>
+                            <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-none">
+                                <span class="text-white">Desenvolve Vilhena:</span> <span class="text-[var(--darker-blue)]">O Futuro é Agora.</span>
+                            </h2>
+                            <p class="text-lg lg:text-xl text-[var(--text-medium)] mb-8 leading-relaxed">
+                                Impulsionamos o crescimento económico, conectamos talentos a vagas e fortalecemos o empreendedorismo local. Descubra oportunidades e faça parte do progresso de Vilhena.
+                            </p>
+                            <ul class="space-y-4 text-[var(--text-medium)] mb-10 text-md lg:text-lg">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Hub de carreiras: Vagas, currículos e serviços freelancer.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Guia comercial interativo: Encontre e apoie negócios locais.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-[var(--primary-blue)] mr-3 shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Selo "Orgulho de Vilhena": Valorizando produtos e serviços da nossa terra.</span>
+                                </li>
+                            </ul>
+                            <a href="pages/desenvolve-vilhena.html" class="btn btn-primary text-lg">Explore Oportunidades</a>
+                        </div>
+                        <div class="hidden md:flex justify-center items-center">
+                            <img src="https://placehold.co/600x750/042b99/93C5FD?text=Progresso+Econômico+Vilhena" alt="Desenvolvimento Econômico em Vilhena" class="shadow-2xl max-h-[750px] rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x750/cccccc/ffffff?text=Imagem+Indisponível';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-24 px-4 text-center bg-white scroll-animate">
+                 <h2 class="text-4xl lg:text-5xl font-black mb-10 leading-tight">Vilhena 360°: <span class="text-[var(--darker-blue)]">Uma Plataforma, Infinitas Possibilidades.</span></h2>
+                 <p class="text-xl text-[var(--text-medium)] max-w-4xl mx-auto mb-12 leading-relaxed">
+                    Mais que um portal, somos um ecossistema digital pulsante, projetado para empoderar cada cidadão, celebrar nossa identidade única e impulsionar o desenvolvimento sustentável de Vilhena. Explore, conecte-se e faça parte desta revolução.
+                 </p>
+                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="border border-[var(--border-light-gray)] p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg">
+                        <span class="text-4xl block mb-3">💡</span>
+                        <h4 class="text-xl font-bold mb-2 text-[var(--primary-blue)]">Inovação</h4>
+                        <p class="text-sm text-[var(--text-medium)]">Tecnologia a serviço da cidadania e do progresso.</p>
+                    </div>
+                     <div class="border border-[var(--border-light-gray)] p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg">
+                        <span class="text-4xl block mb-3">🤝</span>
+                        <h4 class="text-xl font-bold mb-2 text-[var(--primary-blue)]">Conexão</h4>
+                        <p class="text-sm text-[var(--text-medium)]">Unindo governo, cidadãos e o setor produtivo.</p>
+                    </div>
+                     <div class="border border-[var(--border-light-gray)] p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg">
+                        <span class="text-4xl block mb-3">🌍</span>
+                        <h4 class="text-xl font-bold mb-2 text-[var(--primary-blue)]">Cultura</h4>
+                        <p class="text-sm text-[var(--text-medium)]">Valorizando e preservando nossa rica identidade.</p>
+                    </div>
+                     <div class="border border-[var(--border-light-gray)] p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg">
+                        <span class="text-4xl block mb-3">🚀</span>
+                        <h4 class="text-xl font-bold mb-2 text-[var(--primary-blue)]">Desenvolvimento</h4>
+                        <p class="text-sm text-[var(--text-medium)]">Fomentando oportunidades e a economia local.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="analyzeProposalModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="analyzeProposalModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">✨ Analisar Proposta Legislativa com IA</h3>
+            <p class="text-[var(--text-medium)] mb-4 text-sm">Cole o texto da proposta legislativa abaixo para obter um resumo e análise de potenciais impactos gerados por IA.</p>
+            <textarea id="proposalText" placeholder="Cole o texto completo da proposta aqui..."></textarea>
+            <button id="submitProposalAnalysis" class="btn btn-primary w-full">Analisar Texto</button>
+            <div id="proposalAnalysisResult" class="modal-result hidden">
+                <div class="loading-spinner hidden"></div>
+                <div id="analysisOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="avanteVilhenaInsightsModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="avanteVilhenaInsightsModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">💡 Insights da IA sobre a Proposta</h3>
+            <p class="text-[var(--text-medium)] mb-4 text-sm">Cole o texto da proposta abaixo para que a IA possa gerar um resumo, identificar potenciais impactos e pontos a favor/contra para fomentar uma discussão informada.</p>
+            <textarea id="avanteVilhenaProposalText" placeholder="Cole o texto da proposta do 'Avante Vilhena' aqui..."></textarea>
+            <button id="submitAvanteVilhenaInsights" class="btn btn-primary w-full">Gerar Insights</button>
+            <div id="avanteVilhenaInsightsResult" class="modal-result hidden">
+                <div class="loading-spinner hidden"></div>
+                <div id="avanteVilhenaInsightsOutput"></div>
+                 <button id="publishToForumBtn" class="btn btn-secondary w-full mt-4 hidden" data-forum-url="pages/forum-vilhenense.html">Publicar Discussão no Fórum</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="suggestRecipeModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="suggestRecipeModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">✨ Sugerir Receita com Ingredientes Locais (IA)</h3>
+            <p class="text-[var(--text-medium)] mb-4 text-sm">Liste os ingredientes locais que você tem disponíveis (separados por vírgula) e nossa IA criará uma sugestão de receita para você!</p>
+            <textarea id="ingredientsText" placeholder="Ex: farinha de milho, queijo coalho, castanha do Pará, tucupi..."></textarea>
+            <button id="submitRecipeSuggestion" class="btn btn-primary w-full">Sugerir Receita</button>
+            <div id="recipeSuggestionResult" class="modal-result hidden">
+                <div class="loading-spinner hidden"></div>
+                <div id="recipeOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newPostModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="newPostModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">Criar Novo Tópico no Fórum</h3>
+            <input type="text" id="newPostTitleInput" placeholder="Título do Tópico" class="mb-4">
+            <div class="mb-4">
+                <label for="newPostCategoryInput" class="block text-sm font-medium text-[var(--text-medium)] mb-1">Categoria:</label>
+                <select id="newPostCategoryInput" class="w-full p-2 border border-[var(--border-light-gray)] rounded-md bg-[var(--bg-off-white)]">
+                    <option value="Trânsito e Mobilidade">Trânsito e Mobilidade</option>
+                    <option value="Meio Ambiente">Meio Ambiente</option>
+                    <option value="Educação e Cultura">Educação e Cultura</option>
+                    <option value="Saúde Pública">Saúde Pública</option>
+                    <option value="Debates Cívicos">Debates Cívicos</option>
+                    <option value="Propostas Legislativas">Propostas Legislativas</option>
+                    <option value="Ideias Gerais" selected>Ideias Gerais</option>
+                    <option value="Serviços e Comércio">Serviços e Comércio</option>
+                    <option value="Segurança">Segurança</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="newPostTagsInput" class="block text-sm font-medium text-[var(--text-medium)] mb-1">Tags (separadas por vírgula):</label>
+                <input type="text" id="newPostTagsInput" placeholder="Ex: ciclovia, parque, evento cultural" class="w-full p-2 border border-[var(--border-light-gray)] rounded-md bg-[var(--bg-off-white)]">
+            </div>
+            <textarea id="newPostContentInput" placeholder="Escreva o conteúdo do seu tópico aqui..."></textarea>
+            <button id="submitNewPostBtn" class="btn btn-primary w-full mt-4">Publicar Tópico</button>
+        </div>
+    </div>
+
+    <div id="editPostModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="editPostModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">Editar Item</h3>
+            <input type="text" id="editPostTitleInput" placeholder="Título do Tópico (se aplicável)" class="mb-4">
+            <textarea id="editPostContentInput" placeholder="Edite o conteúdo aqui..."></textarea>
+            <button id="saveEditPostBtn" class="btn btn-primary w-full mt-4">Guardar Alterações</button>
+        </div>
+    </div>
+
+     <div id="reportModal" class="modal">
+        <div class="modal-content relative">
+            <button class="modal-close-btn" data-modal-id="reportModal" aria-label="Fechar modal">&times;</button>
+            <h3 class="modal-title">Denunciar Conteúdo</h3>
+            <p class="text-[var(--text-medium)] mb-4 text-sm">Por favor, descreva o motivo da denúncia.</p>
+            <textarea id="reportReason" placeholder="Motivo da denúncia..."></textarea>
+            <button id="submitReport" class="btn btn-primary w-full">Enviar Denúncia</button>
+            <p id="reportFeedback" class="text-sm text-green-600 mt-3 hidden"></p>
+        </div>
+    </div>
+
+    <footer class="footer py-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-3xl font-bold mb-6">Vilhena 360°</h4>
+            <p class="text-lg mb-3">&copy; <span id="currentYear"></span> Todos os direitos reservados.</p>
+            <p class="text-md mb-8">Uma plataforma para o avanço e a valorização de Vilhena.</p>
+            <div class="space-x-6">
+                <a href="pages/politica-privacidade.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="politica-privacidade">Política de Privacidade</a>
+                <a href="pages/termos-uso.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="termos-uso">Termos de Uso</a>
+                <a href="#" class="hover:text-[var(--accent-blue)] transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
+

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Elementos Comuns ---
+    // --- Início do Código Comum para Menus e Navegação ---
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileNavMenu = document.getElementById('mobile-nav-menu');
     const overlay = document.getElementById('overlay');
@@ -41,22 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
             profileDropdownMenu.innerHTML = `<a href="#" id="dropdownLoginAction" class="profile-dropdown-item">Entrar</a><a href="#" id="dropdownRegisterAction" class="profile-dropdown-item">Registrar-se</a>`;
             if (profileIconBtn) profileIconBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a.75.75 0 0 1 .75.75v.256a4.5 4.5 0 0 1 3.384 4.47l.006.024c.03.16.05.322.058.488l.002.044a5.074 5.074 0 0 1 .002.106q.001.044.002.087a4.732 4.732 0 0 1-.007.137l-.002.032a4.502 4.502 0 0 1-1.36 2.627A4.5 4.5 0 0 1 12 12.5a4.5 4.5 0 0 1-3.075-1.016A4.501 4.501 0 0 1 7.57 8.857l-.002-.032a4.733 4.733 0 0 1-.006-.137q.001-.043.002-.087c0-.035.001-.07.002-.106l.002-.044a4.504 4.504 0 0 1 .058-.488l.006-.024a4.5 4.5 0 0 1 3.384-4.47V3.25a.75.75 0 0 1 .75-.75Zm0 1.5A3 3 0 0 0 9.232 7.004l-.005.024a3.004 3.004 0 0 0-.038.326l-.002.03c0 .024 0 .047-.001.07a2.98 2.98 0 0 0 .004.091l.002.022a3 3 0 0 0 .908 1.752A3 3 0 0 0 12 11a3 3 0 0 0 2.008-.701 3.002 3.002 0 0 0 .907-1.752l.002-.022c.002-.023.003-.046.004-.07a2.98 2.98 0 0 0-.001-.09l-.002-.03a3.004 3.004 0 0 0-.038-.327l-.005-.023A3 3 0 0 0 12 4Zm0 9a7.487 7.487 0 0 0-5.349 2.289A7.5 7.5 0 0 0 1.5 20.75a.75.75 0 0 0 .75.75h19.5a.75.75 0 0 0 .75-.75 7.5 7.5 0 0 0-5.151-5.461A7.487 7.487 0 0 0 12 13Z"></path></svg>`;
             mobileAuthHTML = `<hr id="mobileNavAuthHr" class="border-t border-white/20 my-2 auth-dynamic-link"><a href="#" id="mobileLoginAction" class="nav-link auth-dynamic-link">Entrar</a><a href="#" id="mobileRegisterAction" class="nav-link auth-dynamic-link">Registrar-se</a>`;
-            document.getElementById('dropdownLoginAction')?.addEventListener('click', (e) => {e.preventDefault(); console.log('Simulação: Abrir modal de Login'); profileDropdownMenu.classList.remove('active'); });
-            document.getElementById('dropdownRegisterAction')?.addEventListener('click', (e) => {e.preventDefault(); console.log('Simulação: Abrir modal de Registro'); profileDropdownMenu.classList.remove('active'); });
         }
-        mobileNavAuthContainer.insertAdjacentHTML('beforeend', mobileAuthHTML);
-        mobileNavAuthContainer.querySelector('#mobileLoginAction')?.addEventListener('click', () => { console.log('Simulação: Abrir modal de Login'); closeMobileMenu(); });
-        mobileNavAuthContainer.querySelector('#mobileRegisterAction')?.addEventListener('click', () => { console.log('Simulação: Abrir modal de Registro'); closeMobileMenu(); });
-        mobileNavAuthContainer.querySelector('#mobileLogoutAction')?.addEventListener('click', (e) => { e.preventDefault(); isLoggedIn = false; updateProfileDropdown(); closeMobileMenu(); });
+        if (mobileNavAuthContainer) mobileNavAuthContainer.insertAdjacentHTML('beforeend', mobileAuthHTML);
     }
     updateProfileDropdown();
     if (profileIconBtn) { profileIconBtn.addEventListener('click', (e) => { e.stopPropagation(); if (profileDropdownMenu) profileDropdownMenu.classList.toggle('active'); }); }
     document.addEventListener('click', (e) => { if (profileDropdownMenu && !profileDropdownMenu.contains(e.target) && profileIconBtn && !profileIconBtn.contains(e.target)) { profileDropdownMenu.classList.remove('active'); } });
 
     function highlightActiveNavLink() {
-        const currentPageName = "trabalhador-empresas";
+        const pagesToActivate = ["explore-vilhena", "roteiro-virtual"];
         allNavLinks.forEach(link => {
-            if (link.dataset.pageName === currentPageName) {
+            if (pagesToActivate.includes(link.dataset.pageName)) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -64,79 +59,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     highlightActiveNavLink();
+    // --- Fim do Código Comum ---
 
-    // --- Lógica Específica da Página Trabalhador e Empresas ---
-    const publishDropdownBtn = document.getElementById('publish-dropdown-btn');
-    const publishDropdownMenu = document.getElementById('publish-dropdown-menu');
-    const dropdownFormLinks = document.querySelectorAll('.toggle-form-btn-dropdown');
-    const publicationForms = document.querySelectorAll('.publication-form');
 
-    // Lógica para abrir/fechar o dropdown
-    if (publishDropdownBtn) {
-        publishDropdownBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            publishDropdownMenu.classList.toggle('hidden');
+    // --- LÓGICA ESPECÍFICA DA PÁGINA DE ROTEIRO VIRTUAL ---
+    let map;
+    let markers = [];
+    let currentPolyline = null;
+    let infoWindow;
+
+    // Dados mocados para os roteiros
+    const roteiros = {
+        "Caminhos da História": [
+            { lat: -12.7410, lng: -60.1458, title: "Praça Nossa Senhora Aparecida", desc: "Coração da cidade e palco de eventos históricos." },
+            { lat: -12.7385, lng: -60.1495, title: "Antiga Prefeitura", desc: "Edifício que sediou a administração municipal por décadas." },
+            { lat: -12.7440, lng: -60.1520, title: "Casa de Rondon", desc: "Posto telegráfico histórico construído pela comissão de Rondon." }
+        ],
+        "Verde Urbano": [
+            { lat: -12.7290, lng: -60.1350, title: "Parque Ecológico Municipal", desc: "Principal área de lazer e conservação da fauna e flora local." },
+            { lat: -12.7350, lng: -60.1380, title: "Praça dos Três Poderes", desc: "Centro cívico que abriga a Prefeitura, Câmara e Fórum." }
+        ],
+        "Sabores de Vilhena": [
+            { lat: -12.7425, lng: -60.1470, title: "Restaurante Sabor do Norte", desc: "Especializado em peixes e culinária regional." },
+            { lat: -12.7400, lng: -60.1480, title: "Sorveteria Flocos", desc: "Sabores exóticos de frutas da Amazônia." },
+            { lat: -12.7390, lng: -60.1500, title: "Feira do Produtor", desc: "Produtos frescos e comidas típicas aos finais de semana." }
+        ]
+    };
+
+    // Função global chamada pelo script do Google Maps
+    window.initMap = function() {
+        const vilhena = { lat: -12.7409, lng: -60.1458 };
+        map = new google.maps.Map(document.getElementById("map-container"), {
+            center: vilhena,
+            zoom: 14,
+            mapId: 'VILHENA_360_MAP_STYLE' // ID opcional para estilo customizado no Cloud Console
         });
-    }
+        
+        infoWindow = new google.maps.InfoWindow();
 
-    // Lógica para fechar o dropdown ao clicar fora
-    document.addEventListener('click', (event) => {
-        const dropdownContainer = document.getElementById('publish-dropdown-container');
-        if (publishDropdownMenu && !publishDropdownMenu.classList.contains('hidden')) {
-            if (!dropdownContainer.contains(event.target)) {
-                publishDropdownMenu.classList.add('hidden');
-            }
+        const roteiroItems = document.querySelectorAll('.roteiro-item');
+        roteiroItems.forEach(item => {
+            item.addEventListener('click', () => {
+                roteiroItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const roteiroName = item.querySelector('h4').textContent;
+                displayRoute(roteiroName);
+            });
+        });
+
+        // Exibe o primeiro roteiro por padrão
+        if (roteiroItems.length > 0) {
+            roteiroItems[0].click();
         }
-    });
-    
-    // Lógica para os links dentro do dropdown
-    dropdownFormLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetFormId = link.dataset.form;
-
-            // Esconde todos os formulários
-            publicationForms.forEach(form => form.classList.remove('active'));
-
-            // Mostra o formulário alvo
-            const targetForm = document.getElementById(targetFormId);
-            if (targetForm) {
-                targetForm.classList.add('active');
-            }
-            
-            // Esconde o dropdown
-            if (publishDropdownMenu) {
-                publishDropdownMenu.classList.add('hidden');
-            }
-        });
-    });
-
-    // Simulação de carregamento de vagas, serviços, etc.
-    // Em um aplicativo real, isso viria de um backend/API.
-    const vagasContainer = document.getElementById('vagas-disponiveis-container');
-    if (vagasContainer && vagasContainer.children.length === 5) { // Verifica se os exemplos já foram adicionados
-        // Não faz nada se já houver conteúdo
-    } else if (vagasContainer) {
-        // Limpa o container antes de adicionar para evitar duplicatas
-        vagasContainer.innerHTML = ''; 
-        const vagas = [
-            { title: "Desenvolvedor Web Pleno", company: "Empresa X Tecnologia", desc: "Procuramos desenvolvedor com experiência em React, Node.js e Tailwind CSS para projetos inovadores...", location: "Vilhena - RO (Híbrido)", salary: "A combinar" },
-            { title: "Auxiliar Administrativo", company: "Comércio Varejista Vilhena", desc: "Vaga para auxiliar administrativo com foco em atendimento ao cliente e rotinas de escritório. Ensino médio completo.", location: "Vilhena - RO (Presencial)", salary: "R$ 1.800,00" },
-            { title: "Vendedor(a) Interno", company: "Distribuidora Norte Sul", desc: "Responsável por prospecção de clientes, negociação e fechamento de vendas por telefone e e-mail. Experiência em vendas é um diferencial.", location: "Vilhena - RO (Presencial)", salary: "Comissão + Fixo"},
-            { title: "Técnico em Enfermagem", company: "Hospital Regional de Vilhena", desc: "Atuar nos cuidados e procedimentos de enfermagem aos pacientes, sob supervisão. COREN ativo obrigatório.", location: "Vilhena - RO", salary: "A combinar"},
-            { title: "Motorista Categoria D", company: "Transportadora Rápido Cargas", desc: "Realizar entregas e coletas na região do Cone Sul de Rondônia. Necessário CNH categoria D e experiência comprovada.", location: "Vilhena - RO", salary: "R$ 2.500,00"},
-        ];
-        vagas.forEach(vaga => {
-            const vagaEl = document.createElement('div');
-            vagaEl.className = 'job-listing-card';
-            vagaEl.innerHTML = `<h4>${vaga.title}</h4>
-                               <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">${vaga.company}</p>
-                               <p class="text-base-custom text-[var(--text-medium)] mb-3">${vaga.desc}</p>
-                               <p class="text-sm text-[var(--text-medium)] mb-1"><strong>Local:</strong> ${vaga.location}</p>
-                               <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> ${vaga.salary}</p>
-                               <button class="btn btn-primary w-full text-sm">Candidatar-se</button>`;
-            vagasContainer.appendChild(vagaEl);
-        });
     }
-    // Similar para serviços, currículos, eventos...
+
+    function clearMap() {
+        markers.forEach(marker => marker.setMap(null));
+        markers = [];
+        if (currentPolyline) {
+            currentPolyline.setMap(null);
+            currentPolyline = null;
+        }
+    }
+
+    function displayRoute(roteiroName) {
+        clearMap();
+        const routeData = roteiros[roteiroName];
+        if (!routeData) return;
+
+        const bounds = new google.maps.LatLngBounds();
+        const routePath = [];
+
+        routeData.forEach((ponto, index) => {
+            const marker = new google.maps.Marker({
+                position: { lat: ponto.lat, lng: ponto.lng },
+                map: map,
+                title: ponto.title,
+                animation: google.maps.Animation.DROP,
+                label: `${index + 1}` // Numera os pontos no mapa
+            });
+            
+            marker.addListener('click', () => {
+                infoWindow.setContent(`<strong>${ponto.title}</strong><p>${ponto.desc}</p>`);
+                infoWindow.open(map, marker);
+            });
+
+            markers.push(marker);
+            bounds.extend(marker.getPosition());
+            routePath.push(marker.getPosition());
+        });
+
+        currentPolyline = new google.maps.Polyline({
+            path: routePath,
+            geodesic: true,
+            strokeColor: '#7c0ada',
+            strokeOpacity: 0.8,
+            strokeWeight: 5,
+        });
+        currentPolyline.setMap(map);
+
+        // Ajusta o zoom do mapa para mostrar todo o roteiro
+        if(routeData.length > 1) {
+            map.fitBounds(bounds);
+        } else if (routeData.length === 1) {
+            map.setCenter(bounds.getCenter());
+            map.setZoom(16);
+        }
+    }
 });

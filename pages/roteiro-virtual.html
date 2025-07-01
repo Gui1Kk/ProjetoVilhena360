@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Vilhena - Vilhena 360°</title>
+    <title>Roteiro Virtual Interativo - Vilhena 360°</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
-    <link rel="stylesheet" href="../css/explore-vilhena.css">
+    <link rel="stylesheet" href="../css/roteiro-virtual.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Cs70_jWdVhQQlFvsdI6TacROQZkGWSw&callback=initMap" async defer></script>
 </head>
-<body class="antialiased">
+<body class="bg-gray-50">
+
     <header class="header sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-24">
@@ -46,14 +48,16 @@
             <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
             <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
             <a href="explore-vilhena.html" class="nav-link active" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+            <a href="roteiro-virtual.html" class="nav-link active" data-page-name="roteiro-virtual" style="padding-left: 3rem;">- Roteiro Virtual</a>
+            <a href="desafios-culturais.html" class="nav-link" data-page-name="desafios-culturais" style="padding-left: 3rem;">- Desafios Culturais</a>
+            <a href="memorias-vivas.html" class="nav-link" data-page-name="memorias-vivas" style="padding-left: 3rem;">- Memórias Vivas</a>
             <a href="comunidade.html" class="nav-link" data-page-name="comunidade">🎨 Comunidade</a>
             <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
-            <a href="trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
         </div>
     </nav>
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
 
-    <nav id="desktop-side-nav-menu" class="desktop-side-nav">
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav z-50">
         <div class="desktop-side-nav-logo-container">
             <img src="https://i.postimg.cc/cvzKSKhF/logo.png" alt="Logo Vilhena 360" class="desktop-side-nav-logo">
         </div>
@@ -63,58 +67,82 @@
         <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
         <div class="desktop-side-nav-topic">Cidadania</div>
         <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
-        <a href="boletins-vha.html" class="nav-link" data-page-name="boletins-vha">📰 Boletins VHA</a>
-        <a href="forum-vilhenense.html" class="nav-link" data-page-name="forum-vilhenense">💬 Fórum Vilhenense</a>
         <div class="desktop-side-nav-topic">Exploração & Cultura</div>
         <a href="explore-vilhena.html" class="nav-link active" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+        <a href="roteiro-virtual.html" class="nav-link active" data-page-name="roteiro-virtual" style="padding-left: 3.5rem;">- Roteiro Virtual</a>
+        <a href="desafios-culturais.html" class="nav-link" data-page-name="desafios-culturais" style="padding-left: 3.5rem;">- Desafios Culturais</a>
+        <a href="memorias-vivas.html" class="nav-link" data-page-name="memorias-vivas" style="padding-left: 3.5rem;">- Memórias Vivas</a>
         <a href="comunidade.html" class="nav-link" data-page-name="comunidade">🎨 Comunidade</a>
-        <div class="desktop-side-nav-topic">Desenvolvimento & Oportunidades</div>
+        <div class="desktop-side-nav-topic">Desenvolvimento</div>
         <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
-        <a href="trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
-        <div class="desktop-side-nav-topic">Legal</div>
-        <a href="politica-privacidade.html" class="nav-link footer-nav-link" data-page-name="politica-privacidade">📜 Política de Privacidade</a>
-        <a href="termos-uso.html" class="nav-link footer-nav-link" data-page-name="termos-uso">⚖️ Termos de Uso</a>
     </nav>
-    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-990 hidden"></div>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
-    <main id="main-content-area" class="content-area page-specific-padding">
-        <section id="explore-vilhena">
+    <main class="content-area">
+        <section class="hero-section text-white text-center py-20 px-4" style="background: linear-gradient(to right, rgba(124, 10, 218, 0.8), rgba(4, 43, 153, 0.8)), url('https://placehold.co/1920x600/cccccc/ffffff?text=Vista+Aérea+de+Vilhena') center center/cover;">
+            <div class="container mx-auto">
+                <a href="explore-vilhena.html" class="inline-block bg-white/20 text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-white/30 transition-colors mb-4">‹ Voltar para Explore Vilhena</a>
+                <h1 class="text-5xl font-extrabold mb-4 leading-tight">Explore Vilhena como Nunca Antes</h1>
+                <p class="text-xl max-w-3xl mx-auto mb-8">Descubra roteiros, mergulhe na história com Realidade Aumentada e veja a cidade com novos olhos.</p>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto">
+                <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                    <div class="lg:col-span-1 mb-8 lg:mb-0">
+                        <h3 class="text-2xl font-bold text-[var(--darker-blue)] mb-4">Roteiros Disponíveis</h3>
+                        <div id="roteiros-lista" class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
+                            <div class="roteiro-item p-4 border rounded-lg cursor-pointer hover:bg-white hover:shadow-md transition">
+                                <h4 class="font-bold text-[var(--primary-blue)]">Caminhos da História</h4>
+                                <p class="text-sm text-gray-600">5 Paradas - Aprox. 2h</p>
+                            </div>
+                            <div class="roteiro-item p-4 border rounded-lg cursor-pointer hover:bg-white hover:shadow-md transition">
+                                <h4 class="font-bold text-[var(--primary-blue)]">Verde Urbano</h4>
+                                <p class="text-sm text-gray-600">3 Paradas - Aprox. 1.5h</p>
+                            </div>
+                            <div class="roteiro-item p-4 border rounded-lg cursor-pointer hover:bg-white hover:shadow-md transition">
+                                <h4 class="font-bold text-[var(--primary-blue)]">Sabores de Vilhena</h4>
+                                <p class="text-sm text-gray-600">8 Paradas - Aprox. 3h</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2">
+                         <div id="map-container" class="w-full h-[650px] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center text-gray-500">Carregando mapa interativo...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-16 px-4">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-[var(--darker-blue)] mb-2">Veja o Passado Ganhar Vida!</h2>
+                <p class="text-lg text-gray-600 mb-10">Use a Realidade Aumentada para uma imersão histórica.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="step-card p-6">
+                        <div class="step-icon bg-blue-100 text-blue-600"><i class="fas fa-mobile-alt"></i></div>
+                        <h4 class="text-xl font-semibold my-2">1. Escolha um Ponto</h4>
+                        <p>Selecione um local histórico no mapa do seu roteiro.</p>
+                    </div>
+                     <div class="step-card p-6">
+                        <div class="step-icon bg-purple-100 text-purple-600"><i class="fas fa-camera"></i></div>
+                        <h4 class="text-xl font-semibold my-2">2. Aponte a Câmera</h4>
+                        <p>Ao chegar no local, aponte a câmera do seu celular para o marco.</p>
+                    </div>
+                     <div class="step-card p-6">
+                        <div class="step-icon bg-green-100 text-green-600"><i class="fas fa-magic"></i></div>
+                        <h4 class="text-xl font-semibold my-2">3. Revele a História</h4>
+                        <p>Veja fotos e reconstruções antigas sobrepostas ao cenário atual.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 text-center bg-gray-50">
              <div class="container mx-auto">
-                <a href="../index.html" class="btn btn-secondary mb-8">‹ Voltar para Início</a>
-                <div class="subpage-header-spacing text-center">
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">🗺️ Explore Vilhena</h2>
-                    <p class="text-xl text-[var(--text-medium)] max-w-3xl mx-auto">
-                        Mergulhe na rica história, cultura e belezas de Vilhena. Transformamos a exploração em uma jornada interativa, educativa e memorável.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8 subpage-content-grid">
-                    <div class="card scroll-animate md:col-span-2 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-blue)] text-white">
-                        <h3 class="text-2xl font-semibold mb-3 text-white">🎨 Comunidade Pulsante</h3>
-                        <p class="text-base-custom mb-5 opacity-90">Conecte-se através de paixões, expresse sua criatividade e celebre a diversidade cultural. Fomentamos uma identidade local forte e vibrante.</p>
-                        <a href="comunidade.html" class="btn btn-primary bg-white text-[var(--white)] hover:bg-gray-100 text-sm w-full sm:w-auto">Explorar Comunidade</a>
-                    </div>
-
-                    <div class="card scroll-animate">
-                        <h3 class="text-2xl font-semibold mb-4">Roteiro Virtual Interativo 3.0</h3>
-                        <p class="text-base-custom text-[var(--text-medium)] mb-5">Mapas dinâmicos, avaliações, eventos em tempo real, roteiros temáticos e Realidade Aumentada com fotos históricas.</p>
-                        <a href="roteiro-virtual.html" class="btn btn-primary text-sm w-full">Iniciar Roteiro</a>
-                    </div>
-                    <div class="card scroll-animate" style="animation-delay: 0.2s;">
-                        <h3 class="text-2xl font-semibold mb-4">Desafios Culturais "Descubra Vilhena"</h3>
-                        <p class="text-base-custom text-[var(--text-medium)] mb-5">"Quests" gamificadas pela história local. Caçe QR Codes, resolva enigmas e compita em rankings.</p>
-                        <a href="desafios-culturais.html" class="btn btn-primary text-sm w-full">Ver Desafios</a>
-                    </div>
-                    <div class="card md:col-span-2 scroll-animate" style="animation-delay: 0.4s;">
-                        <h3 class="text-2xl font-semibold mb-4">Memórias Vivas de Vilhena</h3>
-                        <p class="text-base-custom text-[var(--text-medium)] mb-5">Arquivo digital da história oral da cidade: áudios e vídeos com memórias e tradições de moradores.</p>
-                        <a href="memorias-vivas.html" class="btn btn-primary text-sm w-full">Acessar Memórias</a>
-                    </div>
-                </div>
-                <h3 class="text-3xl font-semibold my-10 text-center">Participação nos Desafios Culturais</h3>
-                <div class="chart-container scroll-animate mb-8">
-                    <canvas id="culturalChallengesChart"></canvas>
-                </div>
+                 <h2 class="text-3xl font-bold text-[var(--darker-blue)] mb-4">Compartilhe sua Visão de Vilhena</h2>
+                 <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">Você conhece um caminho especial? Um roteiro temático que só você poderia criar? Compartilhe com a comunidade e ajude a todos a descobrirem novas facetas da nossa cidade.</p>
+                 <button class="btn btn-primary text-lg">Crie seu Próprio Roteiro</button>
             </div>
         </section>
     </main>
@@ -132,6 +160,6 @@
         </div>
     </footer>
 
-    <script src="../js/explore-vilhena.js"></script>
+    <script src="../js/roteiro-virtual.js"></script>
 </body>
 </html>

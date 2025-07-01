@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest Vilhena - Painel de Dados Socioeconômicos - Vilhena 360°</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/invest-vilhena.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="theme-dark bg-gray-900 text-gray-300">
+
+    <header class="header sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex items-center">
+                    <button id="desktop-hamburger-button" class="mr-4 text-white focus:outline-none p-2 hidden md:block" aria-label="Abrir menu de navegação principal">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <a href="../index.html" class="site-title text-white" aria-label="Página Inicial Vilhena 360°">Vilhena 360°</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <button id="profileIconBtn" class="profile-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a.75.75 0 0 1 .75.75v.256a4.5 4.5 0 0 1 3.384 4.47l.006.024c.03.16.05.322.058.488l.002.044a5.074 5.074 0 0 1 .002.106q.001.044.002.087a4.732 4.732 0 0 1-.007.137l-.002.032a4.502 4.502 0 0 1-1.36 2.627A4.5 4.5 0 0 1 12 12.5a4.5 4.5 0 0 1-3.075-1.016A4.501 4.501 0 0 1 7.57 8.857l-.002-.032a4.733 4.733 0 0 1-.006-.137q.001-.043.002-.087c0-.035.001-.07.002-.106l.002-.044a4.504 4.504 0 0 1 .058-.488l.006-.024a4.5 4.5 0 0 1 3.384-4.47V3.25a.75.75 0 0 1 .75-.75Zm0 1.5A3 3 0 0 0 9.232 7.004l-.005.024a3.004 3.004 0 0 0-.038.326l-.002.03c0 .024 0 .047-.001.07a2.98 2.98 0 0 0 .004.091l.002.022a3 3 0 0 0 .908 1.752A3 3 0 0 0 12 11a3 3 0 0 0 2.008-.701 3.002 3.002 0 0 0 .907-1.752l.002-.022c.002-.023.003-.046.004-.07a2.98 2.98 0 0 0-.001-.09l-.002-.03a3.004 3.004 0 0 0-.038-.327l-.005-.023A3 3 0 0 0 12 4Zm0 9a7.487 7.487 0 0 0-5.349 2.289A7.5 7.5 0 0 0 1.5 20.75a.75.75 0 0 0 .75.75h19.5a.75.75 0 0 0 .75-.75 7.5 7.5 0 0 0-5.151-5.461A7.487 7.487 0 0 0 12 13Z"></path></svg>
+                        </button>
+                        <div id="profileDropdownMenu" class="profile-dropdown"></div>
+                    </div>
+                    <div class="md:hidden ml-2">
+                        <button id="hamburger-button" class="text-white focus:outline-none p-3 -mr-3" aria-label="Abrir menu de navegação">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav z-50">
+        </nav>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <main class="content-area pt-0">
+        <section class="hero-invest text-white text-center py-20 px-4 relative">
+            <div class="absolute inset-0 bg-gray-900 opacity-70"></div>
+            <div class="relative z-10 container mx-auto">
+                 <a href="desenvolve-vilhena.html" class="inline-block bg-white/10 text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-white/20 transition-colors mb-4 border border-white/20">‹ Voltar para Desenvolve Vilhena</a>
+                <h1 class="text-5xl font-extrabold mb-4 leading-tight">Invest Vilhena</h1>
+                <p class="text-xl max-w-3xl mx-auto">Dados Estratégicos para Decisões Inteligentes. O portal de geointeligência econômica do Portal do Cone Sul.</p>
+            </div>
+        </section>
+        
+        <section class="py-12 -mt-16 relative z-20 px-4">
+            <div class="container mx-auto">
+                <div class="data-panel mb-8">
+                    <h3 class="panel-title">Visão Geral de Vilhena</h3>
+                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                        <div class="indicator-card"><span class="label">População (2022)</span><span class="value">95.832</span></div>
+                        <div class="indicator-card"><span class="label">PIB (2021)</span><span class="value">R$ 3,8 bi</span></div>
+                        <div class="indicator-card"><span class="label">PIB Per Capita (2021)</span><span class="value">R$ 40.328</span></div>
+                        <div class="indicator-card"><span class="label">IDH (2010)</span><span class="value text-green-400">0.731</span></div>
+                        <div class="indicator-card col-span-2 md:col-span-1 lg:col-span-1"><span class="label">Salário Médio (2022)</span><span class="value">2,1 s.m.</span></div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="data-panel">
+                             <h3 class="panel-title">Panorama Empresarial - Vilhena</h3>
+                             <div class="grid md:grid-cols-2 gap-8">
+                                 <div>
+                                     <h4 class="text-lg font-semibold text-gray-200 mb-3">Empresas Ativas por Porte</h4>
+                                     <div class="space-y-4">
+                                         <div><span class="data-label">Total Ativas</span><span class="data-value">11.272</span></div>
+                                         <div><span class="data-label">MEI</span><span class="data-value">5.795 (51,4%)</span></div>
+                                         <div><span class="data-label">Microempresas (ME)</span><span class="data-value">4.655 (41,3%)</span></div>
+                                     </div>
+                                 </div>
+                                 <div>
+                                     <h4 class="text-lg font-semibold text-gray-200 mb-3">Setores Predominantes</h4>
+                                      <div class="space-y-4">
+                                         <div><span class="data-label">Serviços</span><span class="data-value text-green-400">48,6%</span></div>
+                                         <div><span class="data-label">Comércio</span><span class="data-value text-yellow-400">37,8%</span></div>
+                                         <div><span class="data-label">Indústria</span><span class="data-value text-blue-400">8,2%</span></div>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                        <div class="data-panel">
+                            <h3 class="panel-title">Série Histórica de Indicadores (Vilhena)</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="chart-container">
+                                    <h4 class="text-center font-semibold text-gray-300 mb-2">Evolução do PIB Municipal</h4>
+                                    <canvas id="pibChart"></canvas>
+                                </div>
+                                <div class="chart-container">
+                                    <h4 class="text-center font-semibold text-gray-300 mb-2">Evolução do IDH Municipal</h4>
+                                    <canvas id="idhChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-1 space-y-8">
+                        <div class="data-panel">
+                             <h3 class="panel-title">Mercado de Trabalho (CAGED)</h3>
+                             <div class="space-y-4">
+                                <div><span class="data-label">Total de Trabalhadores Formais</span><span class="data-value">26,8 mil</span></div>
+                                <div><span class="data-label">Saldo (Mês Recente)</span><span class="data-value text-green-400">+231</span></div>
+                                <hr class="border-gray-700 my-3">
+                                <h4 class="font-semibold text-gray-400 text-sm">Perfil Trabalhador (RO)</h4>
+                                <div><span class="data-label">Principal Faixa Etária (Admissões)</span><span class="data-value">18 a 24 anos</span></div>
+                             </div>
+                        </div>
+                        <div class="data-panel">
+                             <h3 class="panel-title">Indicadores Macro (Brasil)</h3>
+                             <div class="space-y-4">
+                                <div><span class="data-label">Taxa Selic</span><span class="data-value text-red-400">14,75%</span></div>
+                                <div><span class="data-label">IPCA (12m)</span><span class="data-value text-yellow-400">+5,32%</span></div>
+                                <div><span class="data-label">Taxa de Desemprego</span><span class="data-value">7,8%</span></div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12 text-sm text-gray-500">
+                    <p>Fontes: IBGE, IPEA, FIRJAN, Novo CAGED, Ministério do Trabalho e Emprego. Dados compilados para fins de demonstração.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-20 mt-16 bg-gray-800 text-gray-300 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-3xl font-bold mb-6">Vilhena 360°</h4>
+            <p class="text-lg mb-3">&copy; <span id="currentYear"></span> Todos os direitos reservados.</p>
+            <p class="text-md mb-8">Uma plataforma para o avanço e a valorização de Vilhena.</p>
+            <div class="space-x-6">
+                <a href="pages/politica-privacidade.html"
+                    class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors"
+                    data-page-name="politica-privacidade">Política de Privacidade</a>
+                <a href="pages/termos-uso.html"
+                    class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors"
+                    data-page-name="termos-uso">Termos de Uso</a>
+                <a href="#" class="hover:text-[var(--accent-blue)] transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/invest-vilhena.js"></script>
+</body>
+</html>

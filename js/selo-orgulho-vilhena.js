@@ -54,9 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => { if (profileDropdownMenu && !profileDropdownMenu.contains(e.target) && profileIconBtn && !profileIconBtn.contains(e.target)) { profileDropdownMenu.classList.remove('active'); } });
 
     function highlightActiveNavLink() {
-        const currentPageName = "trabalhador-empresas";
+        // Como esta página é uma sub-seção de "Desenvolve Vilhena", ativamos ambos os links
+        const pagesToActivate = ["desenvolve-vilhena", "selo-orgulho-vilhena"];
         allNavLinks.forEach(link => {
-            if (link.dataset.pageName === currentPageName) {
+            if (pagesToActivate.includes(link.dataset.pageName)) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -65,78 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     highlightActiveNavLink();
 
-    // --- Lógica Específica da Página Trabalhador e Empresas ---
-    const publishDropdownBtn = document.getElementById('publish-dropdown-btn');
-    const publishDropdownMenu = document.getElementById('publish-dropdown-menu');
-    const dropdownFormLinks = document.querySelectorAll('.toggle-form-btn-dropdown');
-    const publicationForms = document.querySelectorAll('.publication-form');
-
-    // Lógica para abrir/fechar o dropdown
-    if (publishDropdownBtn) {
-        publishDropdownBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            publishDropdownMenu.classList.toggle('hidden');
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    const observerOptions = { root: null, rootMargin: '0px 0px -15% 0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            else entry.target.classList.remove('is-visible');
         });
-    }
+    }, observerOptions);
+    animatedElements.forEach(el => observer.observe(el));
 
-    // Lógica para fechar o dropdown ao clicar fora
-    document.addEventListener('click', (event) => {
-        const dropdownContainer = document.getElementById('publish-dropdown-container');
-        if (publishDropdownMenu && !publishDropdownMenu.classList.contains('hidden')) {
-            if (!dropdownContainer.contains(event.target)) {
-                publishDropdownMenu.classList.add('hidden');
-            }
-        }
-    });
-    
-    // Lógica para os links dentro do dropdown
-    dropdownFormLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetFormId = link.dataset.form;
+    // --- Não há lógica específica de JavaScript para esta página além do comum ---
 
-            // Esconde todos os formulários
-            publicationForms.forEach(form => form.classList.remove('active'));
-
-            // Mostra o formulário alvo
-            const targetForm = document.getElementById(targetFormId);
-            if (targetForm) {
-                targetForm.classList.add('active');
-            }
-            
-            // Esconde o dropdown
-            if (publishDropdownMenu) {
-                publishDropdownMenu.classList.add('hidden');
-            }
-        });
-    });
-
-    // Simulação de carregamento de vagas, serviços, etc.
-    // Em um aplicativo real, isso viria de um backend/API.
-    const vagasContainer = document.getElementById('vagas-disponiveis-container');
-    if (vagasContainer && vagasContainer.children.length === 5) { // Verifica se os exemplos já foram adicionados
-        // Não faz nada se já houver conteúdo
-    } else if (vagasContainer) {
-        // Limpa o container antes de adicionar para evitar duplicatas
-        vagasContainer.innerHTML = ''; 
-        const vagas = [
-            { title: "Desenvolvedor Web Pleno", company: "Empresa X Tecnologia", desc: "Procuramos desenvolvedor com experiência em React, Node.js e Tailwind CSS para projetos inovadores...", location: "Vilhena - RO (Híbrido)", salary: "A combinar" },
-            { title: "Auxiliar Administrativo", company: "Comércio Varejista Vilhena", desc: "Vaga para auxiliar administrativo com foco em atendimento ao cliente e rotinas de escritório. Ensino médio completo.", location: "Vilhena - RO (Presencial)", salary: "R$ 1.800,00" },
-            { title: "Vendedor(a) Interno", company: "Distribuidora Norte Sul", desc: "Responsável por prospecção de clientes, negociação e fechamento de vendas por telefone e e-mail. Experiência em vendas é um diferencial.", location: "Vilhena - RO (Presencial)", salary: "Comissão + Fixo"},
-            { title: "Técnico em Enfermagem", company: "Hospital Regional de Vilhena", desc: "Atuar nos cuidados e procedimentos de enfermagem aos pacientes, sob supervisão. COREN ativo obrigatório.", location: "Vilhena - RO", salary: "A combinar"},
-            { title: "Motorista Categoria D", company: "Transportadora Rápido Cargas", desc: "Realizar entregas e coletas na região do Cone Sul de Rondônia. Necessário CNH categoria D e experiência comprovada.", location: "Vilhena - RO", salary: "R$ 2.500,00"},
-        ];
-        vagas.forEach(vaga => {
-            const vagaEl = document.createElement('div');
-            vagaEl.className = 'job-listing-card';
-            vagaEl.innerHTML = `<h4>${vaga.title}</h4>
-                               <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">${vaga.company}</p>
-                               <p class="text-base-custom text-[var(--text-medium)] mb-3">${vaga.desc}</p>
-                               <p class="text-sm text-[var(--text-medium)] mb-1"><strong>Local:</strong> ${vaga.location}</p>
-                               <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> ${vaga.salary}</p>
-                               <button class="btn btn-primary w-full text-sm">Candidatar-se</button>`;
-            vagasContainer.appendChild(vagaEl);
-        });
-    }
-    // Similar para serviços, currículos, eventos...
 });

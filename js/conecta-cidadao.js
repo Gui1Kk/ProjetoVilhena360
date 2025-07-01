@@ -100,10 +100,32 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("Resposta inesperada ou vazia da API Gemini.");
         } catch (error) { console.error("Erro ao chamar a API Gemini:", error); throw error; }
     }
-    function typeWriterEffect(element, text, speed = 30) {
-        if (!element) return; element.innerHTML = ""; let i = 0;
-        function type() { if (i < text.length) { element.innerHTML += text.charAt(i); i++; setTimeout(type, speed); } } type();
+    
+    // MODIFICADO: Velocidade da animação alterada (de 30 para 15) e lógica do cursor adicionada
+    function typeWriterEffect(element, text, speed = 15, callback) {
+        if (!element) return;
+        element.innerHTML = "";
+        let i = 0;
+        const cursorSpan = document.createElement('span');
+        cursorSpan.className = 'typewriter-cursor';
+
+        function type() {
+            if (i < text.length) {
+                // Usa textContent para evitar problemas com caracteres HTML e anexa o cursor no final
+                element.textContent = text.substring(0, i + 1);
+                element.appendChild(cursorSpan);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                cursorSpan.remove(); // Remove o cursor ao finalizar
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
     }
+
 
     // --- Lógica Específica da Página Conecta Cidadão ---
     const avanteVilhenaInsightsBtn = document.getElementById('avanteVilhenaInsightsBtn');
@@ -139,8 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const resultText = await callGeminiAPI("Gere um resumo conciso, identifique 3 potenciais impactos positivos, 3 potenciais impactos negativos e 2 pontos para discussão sobre a seguinte proposta: " + text);
-                typeWriterEffect(avanteVilhenaInsightsOutput, resultText);
-                if (publishToForumBtn) publishToForumBtn.classList.remove('hidden');
+                typeWriterEffect(avanteVilhenaInsightsOutput, resultText, 15, () => {
+                    // Callback executado após a digitação
+                    if (publishToForumBtn) publishToForumBtn.classList.remove('hidden');
+                });
             } catch (error) {
                 if (avanteVilhenaInsightsOutput) avanteVilhenaInsightsOutput.textContent = "Erro ao gerar insights: " + error.message;
             } finally {

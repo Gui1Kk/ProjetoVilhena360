@@ -1,0 +1,88 @@
+:root {
+    --primary-blue: #7c0ada;
+    --darker-blue: #042b99;
+    --accent-blue: #3B82F6;
+    --white: #FFFFFF;
+    /* Cores para o tema escuro */
+    --dark-bg-primary: #111827; /* bg-gray-900 */
+    --dark-bg-secondary: #1F2937; /* bg-gray-800 */
+    --dark-border-color: rgba(255, 255, 255, 0.1);
+    --dark-text-primary: #D1D5DB; /* text-gray-300 */
+    --dark-text-secondary: #9CA3AF; /* text-gray-400 */
+    --highlight-green: #4ADE80; /* green-400 */
+    --highlight-yellow: #FACC15; /* yellow-400 */
+    --highlight-red: #F87171; /* red-400 */
+}
+::selection { background-color: var(--primary-blue); color: var(--white); }
+html { scroll-behavior: smooth; }
+
+body.theme-dark {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.header {
+    background-color: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--dark-border-color);
+}
+.site-title { color: var(--white); }
+.profile-icon svg { color: var(--white); }
+#desktop-hamburger-button, #hamburger-button { color: var(--white); }
+.content-area { padding-top: 0; }
+
+.hero-invest {
+    background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0.7) 100%), url('https://placehold.co/1920x700/cccccc/000000?text=Dados+%26+Gráficos');
+    background-size: cover;
+    background-position: center;
+}
+.hero-invest h1, .hero-invest p { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
+
+.indicator-card {
+    background-color: var(--dark-bg-secondary);
+    border: 1px solid var(--dark-border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+.indicator-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 20px rgba(124, 10, 218, 0.2);
+}
+.indicator-card .label { font-size: 0.875rem; font-weight: 500; color: var(--dark-text-secondary); }
+.indicator-card .value { font-size: 1.875rem; font-weight: 800; color: var(--white); letter-spacing: -0.05em; }
+.indicator-card .value.text-green-400 { color: var(--highlight-green); }
+.indicator-card .value.text-yellow-400 { color: var(--highlight-yellow); }
+.indicator-card .value.text-red-400 { color: var(--highlight-red); }
+
+.data-panel {
+    background-color: var(--dark-bg-secondary);
+    border: 1px solid var(--dark-border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+.panel-title { font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--dark-border-color); }
+.panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+.panel-grid > div, .data-panel .space-y-4 > div { display: flex; flex-direction: column; }
+.data-label { font-size: 0.875rem; color: var(--dark-text-secondary); margin-bottom: 0.25rem; }
+.data-value { font-size: 1.125rem; font-weight: 600; color: var(--white); }
+.data-value.text-green-400 { color: var(--highlight-green); }
+.data-value.text-yellow-400 { color: var(--highlight-yellow); }
+.data-value.text-red-400 { color: var(--highlight-red); }
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.footer { background-color: var(--dark-bg-primary); border-top: 1px solid var(--dark-border-color); }
+.footer h4 { color: var(--white); }
+.footer p { color: var(--dark-text-primary); }
+.footer a { color: var(--dark-text-secondary); }
+.footer a:hover { color: var(--accent-blue); }

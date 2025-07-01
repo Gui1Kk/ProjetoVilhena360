@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Ajuda - Vilhena 360°</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/central-ajuda.css"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="antialiased bg-[var(--bg-off-white)]">
+    <header class="header sticky top-0 z-50 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex items-center">
+                    <button id="desktop-hamburger-button" class="mr-4 text-[var(--darker-blue)] focus:outline-none p-2 hidden md:block" aria-label="Abrir menu de navegação principal">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <a href="../index.html" class="site-title" aria-label="Página Inicial Vilhena 360°">
+                        Vilhena 360°
+                    </a>
+                </div>
+                <div class="flex items-center space-x-3 md:space-x-4">
+                    <div class="relative">
+                        <button id="profileIconBtn" class="profile-icon" aria-label="Menu do Perfil">
+                            </button>
+                        <div id="profileDropdownMenu" class="profile-dropdown">
+                            </div>
+                    </div>
+                    <div class="md:hidden ml-2">
+                        <button id="hamburger-button" class="text-[var(--darker-blue)] focus:outline-none p-3 -mr-3" aria-label="Abrir menu de navegação">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav-menu" class="nav-menu fixed top-0 right-0 h-full w-72 sm:w-80 transform translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl md:hidden">
+        <div class="pt-24">
+            <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+            <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+            <a href="explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+            <a href="comunidade.html" class="nav-link" data-page-name="comunidade">🎨 Comunidade</a>
+            <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+            <a href="trabalhador-empresas.html" class="nav-link" data-page-name="trabalhador-empresas">💼 Trabalhador e Empresas</a>
+        </div>
+    </nav>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav">
+        <div class="desktop-side-nav-logo-container">
+            <img src="https://i.postimg.cc/cvzKSKhF/logo.png" alt="Logo Vilhena 360" class="desktop-side-nav-logo">
+        </div>
+        <button id="desktop-nav-close-btn" class="desktop-nav-close-btn" aria-label="Fechar menu de navegação principal">&times;</button>
+        <div class="desktop-side-nav-header">Navegação</div>
+        <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+        </nav>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[70] hidden"></div>
+
+    <main class="content-area page-specific-padding pt-12">
+        <div class="container mx-auto">
+            <a href="../index.html" class="btn btn-secondary mb-10 inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Voltar para Início
+            </a>
+            <div class="text-center mb-12">
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-[var(--darker-blue)] mb-4">Central de Ajuda Vilhena 360°</h1>
+                <p class="text-lg text-[var(--text-medium)] max-w-2xl mx-auto">Encontre respostas para suas dúvidas, aprenda a usar nossas ferramentas ou entre em contato com o suporte.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="help-card">
+                    <div class="help-card-icon bg-blue-100 text-blue-600">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="help-card-title">Perguntas Frequentes (FAQ)</h3>
+                    <p class="help-card-description">Respostas rápidas para as dúvidas mais comuns sobre a plataforma.</p>
+                    <button class="help-card-button" data-section="faq-section">Ver FAQ</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-card-icon bg-green-100 text-green-600">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="help-card-title">Tutoriais e Guias</h3>
+                    <p class="help-card-description">Aprenda a usar as funcionalidades do Vilhena 360° passo a passo.</p>
+                    <button class="help-card-button" data-section="tutorials-section">Ver Tutoriais</button>
+                </div>
+                <div class="help-card">
+                     <div class="help-card-icon bg-purple-100 text-purple-600">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="help-card-title">Suporte ao Usuário</h3>
+                    <p class="help-card-description">Precisa de ajuda personalizada? Fale com nosso assistente virtual ou equipe.</p>
+                    <button class="help-card-button" data-section="support-chat-section">Iniciar Chat de Suporte</button>
+                </div>
+            </div>
+
+            <section id="faq-section" class="help-content-section hidden mb-16 p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[var(--darker-blue)] mb-6">Perguntas Frequentes</h2>
+                <div class="space-y-4">
+                    <details class="faq-item">
+                        <summary class="faq-question">Como me registro na plataforma?</summary>
+                        <p class="faq-answer">Você pode se registrar clicando no ícone de perfil no canto superior direito e selecionando "Registrar-se".</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">Como publico uma vaga de emprego?</summary>
+                        <p class="faq-answer">Acesse a seção "Trabalhador e Empresas" e clique em "Publicar Vaga". Preencha o formulário e envie.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">A plataforma é gratuita?</summary>
+                        <p class="faq-answer">Sim, o uso da plataforma Vilhena 360° é gratuito para todos os cidadãos e empresas.</p>
+                    </details>
+                </div>
+            </section>
+
+            <section id="tutorials-section" class="help-content-section hidden mb-16 p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[var(--darker-blue)] mb-6">Tutoriais e Guias</h2>
+                <p class="text-[var(--text-medium)]">Em breve, tutoriais em vídeo e guias detalhados sobre como usar cada ferramenta.</p>
+                </section>
+
+            <section id="support-chat-section" class="help-content-section hidden p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[var(--darker-blue)] mb-6">Chat com Suporte - Athena Assistente</h2>
+                <div id="athenaChatContainer" class="h-96 border border-[var(--border-light-gray)] rounded-md p-4 overflow-y-auto mb-4 bg-gray-50 flex flex-col space-y-3">
+                    <div class="chat-message-support received-support">
+                        <span class="font-semibold text-[var(--primary-blue)]">Athena Assistente:</span> Olá! Sou Athena, sua assistente virtual. Como posso ajudar você hoje com a plataforma Vilhena 360° ou para registrar uma denúncia?
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="athenaChatMessageInput" placeholder="Digite sua dúvida ou denúncia..." class="flex-grow p-3 border border-[var(--border-light-gray)] rounded-lg text-sm focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                    <button id="sendAthenaChatMessageBtn" class="p-3 bg-[var(--primary-blue)] text-white rounded-lg hover:bg-[var(--darker-blue)] focus:outline-none" aria-label="Enviar mensagem para Athena">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                    </button>
+                </div>
+                <div id="athenaTypingIndicator" class="px-1 py-2 text-sm text-gray-500 hidden">
+                    <span class="animate-pulse">Athena está digitando...</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer py-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-3xl font-bold mb-6">Vilhena 360°</h4>
+            <p class="text-lg mb-3">&copy; <span id="currentYear"></span> Todos os direitos reservados.</p>
+            <p class="text-md mb-8">Uma plataforma para o avanço e a valorização de Vilhena.</p>
+            <div class="space-x-6">
+                <a href="pages/politica-privacidade.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="politica-privacidade">Política de Privacidade</a>
+                <a href="pages/termos-uso.html" class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors" data-page-name="termos-uso">Termos de Uso</a>
+                <a href="#" class="hover:text-[var(--accent-blue)] transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/central-ajuda.js"></script>
+</body>
+</html>

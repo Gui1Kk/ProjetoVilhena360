@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Gamer - Vilhena 360°</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://i.postimg.cc/cvzKSKhF/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/arena-gamer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <header class="header sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex items-center">
+                    <button id="desktop-hamburger-button" class="mr-4 text-white focus:outline-none p-2 hidden md:block"
+                        aria-label="Abrir menu de navegação principal">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <a href="../index.html" class="site-title" aria-label="Página Inicial Vilhena 360°">Vilhena 360°</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <button id="profileIconBtn" class="profile-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.5a.75.75 0 0 1 .75.75v.256a4.5 4.5 0 0 1 3.384 4.47l.006.024c.03.16.05.322.058.488l.002.044a5.074 5.074 0 0 1 .002.106q.001.044.002.087a4.732 4.732 0 0 1-.007.137l-.002.032a4.502 4.502 0 0 1-1.36 2.627A4.5 4.5 0 0 1 12 12.5a4.5 4.5 0 0 1-3.075-1.016A4.501 4.501 0 0 1 7.57 8.857l-.002-.032a4.733 4.733 0 0 1-.006-.137q.001-.043.002-.087c0-.035.001-.07.002-.106l.002-.044a4.504 4.504 0 0 1 .058-.488l.006-.024a4.5 4.5 0 0 1 3.384-4.47V3.25a.75.75 0 0 1 .75-.75Zm0 1.5A3 3 0 0 0 9.232 7.004l-.005.024a3.004 3.004 0 0 0-.038.326l-.002.03c0 .024 0 .047-.001.07a2.98 2.98 0 0 0 .004.091l.002.022a3 3 0 0 0 .908 1.752A3 3 0 0 0 12 11a3 3 0 0 0 2.008-.701 3.002 3.002 0 0 0 .907-1.752l.002-.022c.002-.023.003-.046.004-.07a2.98 2.98 0 0 0-.001-.09l-.002-.03a3.004 3.004 0 0 0-.038-.327l-.005-.023A3 3 0 0 0 12 4Zm0 9a7.487 7.487 0 0 0-5.349 2.289A7.5 7.5 0 0 0 1.5 20.75a.75.75 0 0 0 .75.75h19.5a.75.75 0 0 0 .75-.75 7.5 7.5 0 0 0-5.151-5.461A7.487 7.487 0 0 0 12 13Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="profileDropdownMenu" class="profile-dropdown"></div>
+                    </div>
+                    <div class="md:hidden ml-2">
+                        <button id="hamburger-button" class="text-white focus:outline-none p-3 -mr-3"
+                            aria-label="Abrir menu de navegação">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav-menu"
+        class="nav-menu fixed top-0 right-0 h-full w-72 sm:w-80 transform translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl md:hidden">
+        <div class="pt-24">
+            <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+            <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+            <a href="explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+            <a href="comunidade.html" class="nav-link active" data-page-name="comunidade">🎨 Comunidade</a>
+            <a href="arena-gamer.html" class="nav-link active" data-page-name="arena-gamer"
+                style="padding-left: 3rem;">- Arena Gamer</a>
+            <a href="galeria-virtual.html" class="nav-link" data-page-name="galeria-virtual"
+                style="padding-left: 3rem;">- Galeria Virtual</a>
+            <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve
+                Vilhena</a>
+        </div>
+    </nav>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+
+    <nav id="desktop-side-nav-menu" class="desktop-side-nav z-50">
+        <div class="desktop-side-nav-logo-container">
+            <img src="https://i.postimg.cc/cvzKSKhF/logo.png" alt="Logo Vilhena 360" class="desktop-side-nav-logo">
+        </div>
+        <button id="desktop-nav-close-btn" class="desktop-nav-close-btn"
+            aria-label="Fechar menu de navegação principal">&times;</button>
+        <div class="desktop-side-nav-header">Navegação</div>
+        <div class="desktop-side-nav-topic">Principal</div>
+        <a href="../index.html" class="nav-link" data-page-name="inicio">🏠 Início</a>
+        <div class="desktop-side-nav-topic">Cidadania</div>
+        <a href="conecta-cidadao.html" class="nav-link" data-page-name="conecta-cidadao">🏛️ Conecta Cidadão</a>
+        <div class="desktop-side-nav-topic">Exploração & Cultura</div>
+        <a href="explore-vilhena.html" class="nav-link" data-page-name="explore-vilhena">🗺️ Explore Vilhena</a>
+        <a href="comunidade.html" class="nav-link active" data-page-name="comunidade">🎨 Comunidade</a>
+        <a href="arena-gamer.html" class="nav-link active" data-page-name="arena-gamer" style="padding-left: 3.5rem;">-
+            Arena Gamer</a>
+        <a href="galeria-virtual.html" class="nav-link" data-page-name="galeria-virtual" style="padding-left: 3.5rem;">-
+            Galeria Virtual</a>
+        <div class="desktop-side-nav-topic">Desenvolvimento</div>
+        <a href="desenvolve-vilhena.html" class="nav-link" data-page-name="desenvolve-vilhena">📈 Desenvolve Vilhena</a>
+    </nav>
+    <div id="desktop-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <main class="content-area">
+        <section class="hero-arena text-center py-48 px-4 relative">
+
+            <div class="video-background-container">
+                <iframe class="video-background-iframe"
+                    src="https://www.youtube.com/embed/VIDEO_ID_AQUI?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playlist=JnhfPGDjljU"
+                    title="YouTube video background" frameborder="0"
+                    allow="accelerometer; autoplay; mute; loop; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+
+            <div class="relative z-20">
+                <a href="comunidade.html"
+                    class="inline-block bg-white/10 text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-white/20 transition-colors mb-4 border border-white/20">‹
+                    Voltar para Comunidade</a>
+                <h1 class="text-5xl lg:text-7xl font-black tracking-tighter mb-4 leading-tight">BEM-VINDO À ARENA</h1>
+                <p class="text-xl max-w-3xl mx-auto text-gray-300">O ponto de encontro da comunidade gamer de Vilhena.
+                    Compita, evolua e conecte-se.</p>
+            </div>
+
+        </section>
+
+        <section class="py-16 px-4 bg-gray-900">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">Torneios em Destaque</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="tournament-card">
+                        <div class="tournament-card-header">
+                            <img src="https://mmos.com/wp-content/smush-webp/2021/06/valorant-heroes-grayscale-banner.jpg.webp"
+                                alt="Valorant" class="w-full h-40 object-cover">
+                            <div class="game-logo"><img class="icon"
+                                    src="https://img.icons8.com/color/40x40/valorant.png" alt="Logo Valorant"></div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">Copa Vilhena de Valorant</h4>
+                            <p class="text-gray-400 text-sm mb-4">Inscrições até 30/06. Formato 5v5.</p>
+                            <div class="text-lg font-bold text-[var(--primary-blue)] mb-4">Prêmio: R$ 1.000,00</div>
+                            <button class="btn btn-primary w-full">Inscrever Equipe</button>
+                        </div>
+                    </div>
+                    <div class="tournament-card">
+                        <div class="tournament-card-header">
+                            <img src="https://img-cdn.hltv.org/gallerypicture/eNFRc95--El3YT3fdEaXib.png?ixlib=java-2.1.0&w=1200&s=b368b07d32f397c599025770fe16bdc3"
+                                alt="CS2" class="w-full h-40 object-cover">
+                            <div class="game-logo"><img class="icon"
+                                    src="https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png"
+                                    alt="Logo CS2"></div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">Rei do Solo: CS2</h4>
+                            <p class="text-gray-400 text-sm mb-4">Prove que você é o melhor no 1v1.</p>
+                            <div class="text-lg font-bold text-[var(--primary-blue)] mb-4">Prêmio: Periféricos Gamer
+                            </div>
+                            <button class="btn btn-primary w-full">Inscrever-se</button>
+                        </div>
+                    </div>
+                    <div class="tournament-card">
+                        <div class="tournament-card-header">
+                            <img src="https://cdn.awsli.com.br/2500x2500/1610/1610163/produto/177700983/poster-league-of-legends-lol-b-56ca247c.jpg"
+                                alt="League of Legends" class="w-full h-40 object-cover">
+                            <div class="game-logo"><img class="icon"
+                                    src="https://bk.ibxk.com.br/2019/07/26/26171514413327.jpg" alt="Logo LoL"></div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">Batalha do Cone Sul: LoL</h4>
+                            <p class="text-gray-400 text-sm mb-4">Torneio regional com equipes de todo o Cone Sul.</p>
+                            <div class="text-lg font-bold text-[var(--primary-blue)] mb-4">Prêmio: Vaga para o Estadual
+                            </div>
+                            <button class="btn btn-primary w-full">Inscrever Equipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 bg-[#111827]">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center text-white mb-10">Rankings da Temporada</h2>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                    <div class="border-b border-gray-700 mb-4">
+                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                            <button class="tab-button active" data-tab="valorant">Valorant</button>
+                            <button class="tab-button" data-tab="lol">League of Legends</button>
+                            <button class="tab-button" data-tab="cs2">CS2</button>
+                        </nav>
+                    </div>
+
+                    <div id="tab-content-valorant" class="tab-panel">
+                        <h3 class="text-xl font-bold text-white mb-3 tracking-wide">Top 5 Jogadores - Ranqueada Local
+                            (Valorant)</h3>
+                        <ol class="game-ranking-list space-y-2">
+                            <li class="ranking-item"><span>1. VPR_Phoenix</span> <span
+                                    class="text-yellow-400">Radiante</span></li>
+                            <li class="ranking-item"><span>2. JettNoPixel</span> <span class="text-gray-300">Imortal
+                                    3</span></li>
+                            <li class="ranking-item"><span>3. OmenSombrio</span> <span class="text-orange-400">Imortal
+                                    2</span></li>
+                            <li class="ranking-item"><span>4. Killjoy_VHA</span> <span class="text-gray-400">Ascendente
+                                    3</span></li>
+                            <li class="ranking-item"><span>5. SovaFlecheiro</span> <span
+                                    class="text-gray-400">Ascendente 2</span></li>
+                        </ol>
+                    </div>
+
+                    <div id="tab-content-lol" class="tab-panel hidden">
+                        <h3 class="text-xl font-bold text-white mb-3 tracking-wide">Top 5 Jogadores - Ranqueada Local
+                            (LoL)</h3>
+                        <ol class="game-ranking-list space-y-2">
+                            <li class="ranking-item"><span>1. LendaDoNorte</span> <span class="text-yellow-400">1,850
+                                    PDL</span></li>
+                            <li class="ranking-item"><span>2. CorvoVGA</span> <span class="text-gray-300">1,790
+                                    PDL</span></li>
+                            <li class="ranking-item"><span>3. FeiticeiraSup</span> <span class="text-orange-400">1,650
+                                    PDL</span></li>
+                            <li class="ranking-item"><span>4. OAtirador</span> <span class="text-gray-400">1,600
+                                    PDL</span></li>
+                            <li class="ranking-item"><span>5. JG_Imortal</span> <span class="text-gray-400">1,550
+                                    PDL</span></li>
+                        </ol>
+                    </div>
+
+                    <div id="tab-content-cs2" class="tab-panel hidden">
+                        <h3 class="text-xl font-bold text-white mb-3 tracking-wide">Top 5 Jogadores - Ranqueada Local
+                            (CS2)</h3>
+                        <ol class="game-ranking-list space-y-2">
+                            <li class="ranking-item"><span>1. BalaDePrata</span> <span class="text-yellow-400">28.673
+                                    Premier</span></li>
+                            <li class="ranking-item"><span>2. AWP_Deus</span> <span class="text-gray-300">27.982
+                                    Premier</span></li>
+                            <li class="ranking-item"><span>3. RushaB</span> <span class="text-orange-400">27.102
+                                    Premier</span></li>
+                            <li class="ranking-item"><span>4. SmokeMaster</span> <span class="text-gray-400">26.293
+                                    Premier</span></li>
+                            <li class="ranking-item"><span>5. Headshotter</span> <span class="text-gray-400">24.999
+                                    Premier</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="community-links-section container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-black text-center text-white mb-12">CONECTE-SE COM A COMUNIDADE</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+            <a href="#" class="community-link-card whatsapp">
+                <i class="fab fa-whatsapp text-5xl mb-3"></i>
+                <span class="font-bold">Grupo WhatsApp</span>
+            </a>
+            <a href="#" class="community-link-card discord">
+                <i class="fab fa-discord text-5xl mb-3"></i>
+                <span class="font-bold">Servidor Discord</span>
+            </a>
+            <a href="#" class="community-link-card steam">
+                <i class="fab fa-steam text-5xl mb-3"></i>
+                <span class="font-bold">Comunidade Steam</span>
+            </a>
+            <a href="#" class="community-link-card telegram">
+                <i class="fab fa-telegram text-5xl mb-3"></i>
+                <span class="font-bold">Canal Telegram</span>
+            </a>
+            <a href="#" class="community-link-card teamspeak">
+                <i class="fab fa-teamspeak text-5xl mb-3"></i>
+                <span class="font-bold">Sala TeamSpeak</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer py-20 mt-16 bg-gray-800 text-gray-300 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-3xl font-bold mb-6">Vilhena 360°</h4>
+            <p class="text-lg mb-3">&copy; <span id="currentYear"></span> Todos os direitos reservados.</p>
+            <p class="text-md mb-8">Uma plataforma para o avanço e a valorização de Vilhena.</p>
+            <div class="space-x-6">
+                <a href="pages/politica-privacidade.html"
+                    class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors"
+                    data-page-name="politica-privacidade">Política de Privacidade</a>
+                <a href="pages/termos-uso.html"
+                    class="footer-nav-link nav-link hover:text-[var(--accent-blue)] transition-colors"
+                    data-page-name="termos-uso">Termos de Uso</a>
+                <a href="#" class="hover:text-[var(--accent-blue)] transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/arena-gamer.js"></script>
+</body>
+
+</html>

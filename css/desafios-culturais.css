@@ -505,23 +505,3 @@ p, li, .text-base-custom { font-size: 1.15rem; line-height: 1.75; }
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
-
-/* ADICIONADO: Animação do cursor de digitação */
-.typewriter-cursor {
-  display: inline-block;
-  background-color: var(--text-dark);
-  width: 3px;
-  height: 1.1em; /* Altura relativa ao tamanho da fonte */
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
-  margin-left: 2px;
-}
-
-@keyframes blink {
-  from, to {
-    background-color: transparent;
-  }
-  50% {
-    background-color: var(--text-dark);
-  }
-}

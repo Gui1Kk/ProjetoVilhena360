@@ -88,12 +88,25 @@
                     </p>
                 </div>
 
-                <div class="mb-12 text-center space-y-3 sm:space-y-0 sm:space-x-2 md:space-x-3">
-                    <button class="btn btn-primary toggle-form-btn text-sm sm:text-base" data-form="form-publicar-vaga">Empresas: Publicar Vaga</button>
-                    <button class="btn btn-primary toggle-form-btn text-sm sm:text-base" data-form="form-oferecer-servico">Profissionais: Oferecer Serviço</button>
-                    <button class="btn btn-primary toggle-form-btn text-sm sm:text-base" data-form="form-publicar-curriculo">Candidatos: Publicar Currículo</button>
-                    <button class="btn btn-primary toggle-form-btn text-sm sm:text-base" data-form="form-publicar-evento-empresa">Empresas: Publicar Evento/Novidade</button>
+                <div class="mb-12 text-center">
+                    <div class="relative inline-block text-left" id="publish-dropdown-container">
+                        <button id="publish-dropdown-btn" class="btn btn-primary text-sm sm:text-base inline-flex items-center">
+                            Publicar
+                            <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div id="publish-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                            <div class="py-1" role="none">
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 toggle-form-btn-dropdown" data-form="form-publicar-vaga" role="menuitem">Empresas: Publicar Vaga</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 toggle-form-btn-dropdown" data-form="form-oferecer-servico" role="menuitem">Profissionais: Oferecer Serviço</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 toggle-form-btn-dropdown" data-form="form-publicar-curriculo" role="menuitem">Candidatos: Publicar Currículo</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 toggle-form-btn-dropdown" data-form="form-publicar-evento-empresa" role="menuitem">Empresas: Publicar Evento/Novidade</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
 
                 <div id="forms-publicacao-container" class="mb-12">
                     <div id="form-publicar-vaga" class="publication-form card">
@@ -167,6 +180,30 @@
                             <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> R$ 1.800,00</p>
                             <button class="btn btn-primary w-full text-sm">Candidatar-se</button>
                         </div>
+                        <div class="job-listing-card">
+                            <h4>Vendedor(a) Interno</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Distribuidora Norte Sul</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Responsável por prospecção de clientes, negociação e fechamento de vendas por telefone e e-mail. Experiência em vendas é um diferencial.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-1"><strong>Local:</strong> Vilhena - RO (Presencial)</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> Comissão + Fixo</p>
+                            <button class="btn btn-primary w-full text-sm">Candidatar-se</button>
+                        </div>
+                         <div class="job-listing-card">
+                            <h4>Técnico em Enfermagem</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Hospital Regional de Vilhena</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Atuar nos cuidados e procedimentos de enfermagem aos pacientes, sob supervisão. COREN ativo obrigatório.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-1"><strong>Local:</strong> Vilhena - RO</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> A combinar</p>
+                            <button class="btn btn-primary w-full text-sm">Candidatar-se</button>
+                        </div>
+                         <div class="job-listing-card">
+                            <h4>Motorista Categoria D</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Transportadora Rápido Cargas</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Realizar entregas e coletas na região do Cone Sul de Rondônia. Necessário CNH categoria D e experiência comprovada.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-1"><strong>Local:</strong> Vilhena - RO</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Salário:</strong> R$ 2.500,00</p>
+                            <button class="btn btn-primary w-full text-sm">Candidatar-se</button>
+                        </div>
                     </div>
                 </div>
 
@@ -187,6 +224,20 @@
                             <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> (69) 9YYYY-YYYY</p>
                             <button class="btn btn-secondary w-full text-sm">Contratar Serviço</button>
                         </div>
+                        <div class="service-card">
+                            <h4>Aulas de Violão</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Ricardo Músico</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Aulas particulares de violão para iniciantes e intermediários. Método prático e focado no seu gosto musical.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> (69) 9ZZZZ-ZZZZ</p>
+                            <button class="btn btn-secondary w-full text-sm">Contratar Serviço</button>
+                        </div>
+                         <div class="service-card">
+                            <h4>Fotografia de Eventos</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Lentes & Momentos Fotografia</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Cobertura fotográfica completa para casamentos, aniversários e eventos corporativos. Eternize seus melhores momentos.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> (69) 9AAAA-AAAA</p>
+                            <button class="btn btn-secondary w-full text-sm">Contratar Serviço</button>
+                        </div>
                     </div>
                 </div>
 
@@ -199,6 +250,18 @@
                             <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> ana.paula@email.com</p>
                             <button class="btn btn-primary w-full text-sm">Ver Currículo Completo</button>
                         </div>
+                         <div class="resume-card">
+                            <h4>Lucas Souza - Eletricista</h4>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Eletricista residencial e industrial com 5 anos de experiência. Certificação NR10. Disponibilidade imediata.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> lucas.souza.eletro@email.com</p>
+                            <button class="btn btn-primary w-full text-sm">Ver Currículo Completo</button>
+                        </div>
+                         <div class="resume-card">
+                            <h4>Fernanda Lima - Designer Gráfico</h4>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Criação de identidade visual, materiais para redes sociais e peças publicitárias. Portfólio disponível.</p>
+                            <p class="text-sm text-[var(--text-medium)] mb-4"><strong>Contato:</strong> fernanda.design@email.com</p>
+                            <button class="btn btn-primary w-full text-sm">Ver Currículo Completo</button>
+                        </div>
                     </div>
                 </div>
 
@@ -206,10 +269,24 @@
                     <h3 class="text-3xl font-semibold mb-8 text-center text-[var(--darker-blue)] border-b pb-4 border-[var(--border-light-gray)]">Eventos e Novidades das Empresas</h3>
                     <div id="eventos-novidades-container" class="grid md:grid-cols-2 gap-6">
                         <div class="company-event-card">
-                            <img src="https://placehold.co/600x300/7c0ada/FFFFFF?text=Evento+Empresa+X" alt="Evento Empresa X" class="w-full h-48 object-cover mb-4 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/600x300/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <img src="https://tech-store.tn/wp-content/uploads/2023/09/2022-12-15-1.webp" alt="Evento Empresa X" class="w-full h-48 object-cover mb-4 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/600x300/cccccc/ffffff?text=Imagem+Indisponível';">
                             <h4>Inauguração Nova Loja - Tech Store</h4>
                             <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Publicado por: Tech Store Vilhena</p>
                             <p class="text-base-custom text-[var(--text-medium)] mb-3">Venha celebrar conosco a inauguração da nossa nova unidade no centro! Dia 15/06, a partir das 10h. Muitas promoções!</p>
+                            <button class="btn btn-secondary w-full text-sm">Ver Detalhes</button>
+                        </div>
+                         <div class="company-event-card">
+                            <img src="https://ondasulderondonia.com.br/fotos/fk_imagens/WhatsApp%20Image%202024-02-24%20at%2010_06_26.jpeg" alt="Feirão de Veículos" class="w-full h-48 object-cover mb-4 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/600x300/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <h4>Grande Feirão de Seminovos</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Publicado por: Auto+ Vilhena</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Neste fim de semana, dias 21 e 22 de Junho, feirão de veículos seminovos com taxas a partir de 0.99% a.m. Não perca!</p>
+                            <button class="btn btn-secondary w-full text-sm">Ver Detalhes</button>
+                        </div>
+                         <div class="company-event-card">
+                            <img src="https://www.goiascooperativo.coop.br/wp-content/uploads/2023/04/Curso-MEI--1024x537.jpg" alt="Workshop Gratuito" class="w-full h-48 object-cover mb-4 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/600x300/cccccc/ffffff?text=Imagem+Indisponível';">
+                            <h4>Workshop Gratuito: Finanças para MEI</h4>
+                            <p class="text-sm text-[var(--text-medium)] mb-1 font-semibold">Publicado por: Sebrae Vilhena</p>
+                            <p class="text-base-custom text-[var(--text-medium)] mb-3">Aprenda a organizar as finanças do seu negócio. Workshop gratuito dia 25/06 às 19h. Vagas limitadas, inscreva-se!</p>
                             <button class="btn btn-secondary w-full text-sm">Ver Detalhes</button>
                         </div>
                     </div>
